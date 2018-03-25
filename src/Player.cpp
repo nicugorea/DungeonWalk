@@ -247,7 +247,8 @@ void Player::EventHandle( Info &_info )
 	}
 
 	//### Check for moves from random ai
-	RandomMove( _info );
+	if(random)
+		RandomMove( _info );
 
 	_info.playerPos = pos;
 	if(GetAsyncKeyState( VK_SPACE ))
@@ -275,20 +276,21 @@ void Player::EventHandle( Info &_info )
 
 	//### Check for path
 	if(GetAsyncKeyState( 0x58 ))//x key
+	{
 		if(_info.pathState)
 			_info.pathState = false;
 		else
 			_info.pathState = true;
+	}
 
-
-	if(_info.pathState && (pos.x != last.x || pos.y != last.y) || !pathOn)
+	if(_info.pathState && (pos.x != last.x || pos.y != last.y))
 	{
 		ErasePath();
 		FindPath( _info.map, _info.mapSize );
 		DrawPath();
 		pathOn = true;
 	}
-	else if(!_info.pathState && pathOn)
+	else if(!_info.pathState)
 	{
 		ErasePath();
 		pathOn = false;
@@ -327,8 +329,7 @@ void Player::RandomMove( Info& _info )
 
 	direction = dirs[rand() % 4];
 
-	if(random)
-	{
+	
 		if(direction == 'u')
 		{
 			skin = 202;
@@ -362,7 +363,7 @@ void Player::RandomMove( Info& _info )
 
 		}
 
-	}
+	
 
 
 
