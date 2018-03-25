@@ -1,0 +1,26 @@
+﻿#####General#####
+	*A block is equal to 3w and 1h 
+	*	W-wall 1
+		M-monster 2
+		P-player 3
+		T-treasure -1
+
+#####Symbols#####
+	║ 186
+	═ 205
+	' ' 255
+	╗ 187
+	╝ 188
+	╔ 201
+	╚ 200
+	╩ 202
+	╦ 203
+
+	╬ 206
+
+	╠ 204
+	/0 0
+	╣ 185
+
+#####Help#####
+
